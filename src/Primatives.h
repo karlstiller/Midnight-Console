@@ -57,27 +57,21 @@ public:
 		switch (value)
 		{
 		case Spades:
-		{
 			value = Clubs;
 			break;
-		}
 		case Clubs:
-		{
 			value = Diamonds;
 			break;
-		}
 		case Diamonds:
-		{
 			value = Hearts;
 			break;
-		}
 		case Hearts:
-		{
 			value = INVALID;
+			break;
+		case INVALID:
 			break;
 		}
         return *this;
-    }
     }
 
 	Suit& operator++(int)
@@ -122,9 +116,7 @@ public:
 		switch (value)
 		{
 		case Two:
-		{
 			return std::string("2");
-		}
 		case Three:
 		{
 			return std::string("3");
@@ -247,8 +239,10 @@ public:
 			value = INVALID;
 			break;
 		}
+		default:
+			break;
+		}
         return *this;
-    }
     }
 
 	Sequence& operator++(int)

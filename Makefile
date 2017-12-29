@@ -3,8 +3,8 @@
 # based on Makefile from https://spin.atomicobject.com/2016/08/26/makefile-c-projects/
 # 29/12/2017
 
-GXX := clang++
-LDFLAGS  := -L/usr/lib -lstdc++ -lm
+CXX=clang++
+LDFLAGS  := -L/usr/lib -lstdc++ -lm -g -std=c++11 -fPIC
 
 TARGET_EXEC ?= midnight
 
