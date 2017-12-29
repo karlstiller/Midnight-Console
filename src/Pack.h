@@ -8,7 +8,7 @@
 #ifndef PACK_H_
 #define PACK_H_
 
-#include <vector>
+#include <deque>
 #include "Card.h"
 
 class Pack
@@ -18,8 +18,9 @@ public:
 	virtual ~Pack() {};
 	std::string ToString() const;
 	void Shuffle();
+	Card DealOne();
 private:
-	std::vector<Card> pack;
+	std::deque<Card> pack;
 };
 
 #endif /* PACK_H_ */

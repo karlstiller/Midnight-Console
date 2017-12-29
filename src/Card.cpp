@@ -17,6 +17,13 @@ std::string
 Card::ToString()
 {
 	std::string string;
-	string = m_sequence.ToString() + " " + m_suit.ToString() + "\n";
+	if (m_suit.value == Suit::Value::Joker)
+	{
+		string = m_suit.ToString() + "\n";
+	}
+	else
+	{
+		string = m_sequence.ToString() + " " + m_suit.ToString() + "\n";
+	}
 	return string;
 }

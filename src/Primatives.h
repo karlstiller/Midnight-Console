@@ -19,6 +19,7 @@ public:
 		Clubs,
 		Diamonds,
 		Hearts,
+		Joker,
 		INVALID
 	};
 
@@ -32,21 +33,15 @@ public:
 		switch (value)
 		{
 		case Spades:
-		{
 			return std::string("Spades");
-		}
 		case Clubs:
-		{
 			return std::string("Clubs");
-		}
 		case Diamonds:
-		{
 			return std::string("Diamonds");
-		}
 		case Hearts:
-		{
 			return std::string("Hearts");
-		}
+		case Joker:
+			return std::string("Joker");
 		default:
 			return std::string("INVALID");
 		}
@@ -66,6 +61,9 @@ public:
 			value = Hearts;
 			break;
 		case Hearts:
+			value = Joker;
+			break;
+		case Joker:
 			value = INVALID;
 			break;
 		case INVALID:
@@ -118,53 +116,29 @@ public:
 		case Two:
 			return std::string("2");
 		case Three:
-		{
 			return std::string("3");
-		}
 		case Four:
-		{
 			return std::string("4");
-		}
 		case Five:
-		{
 			return std::string("5");
-		}
 		case Six:
-		{
 			return std::string("6");
-		}
 		case Seven:
-		{
 			return std::string("7");
-		}
 		case Eight:
-		{
 			return std::string("8");
-		}
 		case Nine:
-		{
 			return std::string("9");
-		}
 		case Ten:
-		{
 			return std::string("10");
-		}
 		case J:
-		{
 			return std::string("Jack");
-		}
 		case Q:
-		{
 			return std::string("Queen");
-		}
 		case K:
-		{
 			return std::string("King");
-		}
 		case A:
-		{
 			return std::string("Ace");
-		}
 		default:
 			return std::string("INVALID");
 		}
@@ -175,70 +149,44 @@ public:
 		switch (value)
 		{
 		case Two:
-		{
 			value = Three;
 			break;
-		}
 		case Three:
-		{
 			value = Four;
 			break;
-		}
 		case Four:
-		{
 			value = Five;
 			break;
-		}
 		case Five:
-		{
 			value = Six;
 			break;
-		}
 		case Six:
-		{
 			value = Seven;
 			break;
-		}
 		case Seven:
-		{
 			value = Eight;
 			break;
-		}
 		case Eight:
-		{
 			value = Nine;
 			break;
-		}
 		case Nine:
-		{
 			value = Ten;
 			break;
-		}
 		case Ten:
-		{
 			value = J;
 			break;
-		}
 		case J:
-		{
 			value = Q;
 			break;
-		}
 		case Q:
-		{
 			value = K;
 			break;
-		}
 		case K:
-		{
 			value = A;
 			break;
-		}
 		case A:
-		{
 			value = INVALID;
 			break;
-		}
 		default:
 			break;
 		}
