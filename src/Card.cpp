@@ -11,14 +11,12 @@ Card::Card(Suit suit, Sequence sequence)
 	: m_suit(suit)
 	, m_sequence(sequence)
 {
-
 }
 
 std::string
 Card::ToString()
 {
 	std::string string;
-	string = m_sequence.ToString() + " " + m_suit.ToString();
+	string = m_sequence.ToString() + " " + m_suit.ToString() + "\n";
+	return string;
 }
-
-

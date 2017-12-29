@@ -17,6 +17,7 @@ public:
 	Pack();
 	virtual ~Pack() {};
 	std::string ToString() const;
+	void Shuffle();
 private:
 	std::vector<Card> pack;
 };

@@ -12,8 +12,7 @@
 
 class Suit
 {
-	friend class Pack;
-
+public:
 	enum Value
 	{
 		Spades,
@@ -23,8 +22,10 @@ class Suit
 		INVALID
 	};
 
-public:
-	Suit(Value _value);
+	Suit(Value _value)
+	: value(_value)
+	{};
+
 	~Suit(){};
 	std::string ToString()
 	{
@@ -92,8 +93,7 @@ public:
 
 class Sequence
 {
-	friend class Pack;
-
+public:
 	enum Value
 	{
 		Two,
@@ -112,8 +112,10 @@ class Sequence
 		INVALID
 	};
 
-public:
-	Sequence(Value _value);
+	Sequence(Value _value)
+	: value(_value)
+	{};
+
 	~Sequence(){};
 	std::string ToString()
 	{
