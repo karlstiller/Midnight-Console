@@ -16,9 +16,9 @@ class Card
 public:
 	Card(Suit suit, Sequence sequence);
 	~Card() {};
-	Suit GetSuit() { return m_suit; };
-	Sequence GetSequence() { return m_sequence; };
-	std::string ToString();
+	Suit GetSuit() const { return m_suit; } ;
+	Sequence GetSequence() const { return m_sequence; };
+	std::string ToString() const;
 private:
 	Suit m_suit;
 	Sequence m_sequence;

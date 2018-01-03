@@ -14,10 +14,10 @@ Card::Card(Suit suit, Sequence sequence)
 }
 
 std::string
-Card::ToString()
+Card::ToString() const
 {
 	std::string string;
-	if (m_suit.value == Suit::Value::Joker)
+	if (m_suit.GetValue() == Suit::Joker)
 	{
 		string = m_suit.ToString() + "\n";
 	}

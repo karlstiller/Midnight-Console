@@ -13,24 +13,51 @@
 class Suit
 {
 public:
-	enum Value
+	
+	typedef uint8_t int_type;
+	
+	enum e_value
 	{
+		INVALID,
 		Spades,
 		Clubs,
 		Diamonds,
 		Hearts,
 		Joker,
-		INVALID
+		LIMIT
 	};
 
-	Suit(Value _value)
-	: value(_value)
-	{};
+	Suit() : m_value(INVALID) {}
+	
+	Suit(e_value init) : m_value(init)	{};
+	
+	e_value GetValue() const { return m_value; }
+	
+	static bool FromInt(int_type int_val, Suit &value)
+	{
+	    bool result(false);
+
+	    switch(int_val) 
+	    {
+	    case INVALID:
+	    case Spades:
+	    case Clubs:
+	    case Diamonds:
+	    case Hearts:
+	        value.m_value = static_cast<e_value>(int_val);
+	        result = true;
+	        break;
+	    default:
+	        break;
+	    }
+
+	    return result;	
+	}
 
 	~Suit(){};
-	std::string ToString()
+	std::string ToString() const
 	{
-		switch (value)
+		switch (m_value)
 		{
 		case Spades:
 			return std::string("Spades");
@@ -49,45 +76,65 @@ public:
 
 	Suit& operator++()
     {
-		switch (value)
+		switch (m_value)
 		{
 		case Spades:
-			value = Clubs;
+			m_value = Clubs;
 			break;
 		case Clubs:
-			value = Diamonds;
+			m_value = Diamonds;
 			break;
 		case Diamonds:
-			value = Hearts;
+			m_value = Hearts;
 			break;
 		case Hearts:
-			value = Joker;
+			m_value = Joker;
 			break;
 		case Joker:
-			value = INVALID;
+			m_value = LIMIT;
 			break;
-		case INVALID:
+		default:
 			break;
 		}
         return *this;
     }
 
-	Suit& operator++(int)
+	/*Suit& operator++(int)
     {
 		Suit& tmp(*this); // copy
         operator++(); // pre-increment
         return tmp;   // return old value
-    }
+    }*/
 
+private:
 	// member variables
-	Value value;
+	e_value m_value;
 };
+
+inline bool operator ==(const Suit &a, const Suit &b)          { return a.GetValue() == b.GetValue(); }
+inline bool operator ==(const Suit &a, const Suit::e_value &b) { return a.GetValue() == b; }
+inline bool operator ==(const Suit::e_value &a, const Suit &b) { return a == b.GetValue(); }
+inline bool operator !=(const Suit &a, const Suit &b)          { return a.GetValue() != b.GetValue(); }
+inline bool operator !=(const Suit &a, const Suit::e_value &b) { return a.GetValue() != b; }
+inline bool operator !=(const Suit::e_value &a, const Suit &b) { return a != b.GetValue(); }
+
+template <typename Elem, typename Traits>
+std::basic_ostream<Elem, Traits> &operator <<(
+        std::basic_ostream<Elem, Traits> &os,
+        const Suit &obj)
+{
+    return os << obj.ToString();
+}
 
 class Sequence
 {
 public:
-	enum Value
+	
+	typedef uint8_t int_type;
+	
+	enum e_value
 	{
+		INVALID,
 		Two,
 		Three,
 		Four,
@@ -101,17 +148,19 @@ public:
 		Q,
 		K,
 		A,
-		INVALID
+		LIMIT,
 	};
+	
+	Sequence() : m_value(INVALID) {}
 
-	Sequence(Value _value)
-	: value(_value)
-	{};
+	Sequence(e_value init) : m_value(init)	{}
+	
+	e_value GetValue() const { return m_value; }
 
 	~Sequence(){};
-	std::string ToString()
+	std::string ToString() const
 	{
-		switch (value)
+		switch (m_value)
 		{
 		case Two:
 			return std::string("2");
@@ -143,64 +192,82 @@ public:
 			return std::string("INVALID");
 		}
 	}
+	
+	static bool FromInt(int_type int_val, Sequence &value);
 
 	Sequence& operator++()
     {
-		switch (value)
+		switch (m_value)
 		{
 		case Two:
-			value = Three;
+			m_value = Three;
 			break;
 		case Three:
-			value = Four;
+			m_value = Four;
 			break;
 		case Four:
-			value = Five;
+			m_value = Five;
 			break;
 		case Five:
-			value = Six;
+			m_value = Six;
 			break;
 		case Six:
-			value = Seven;
+			m_value = Seven;
 			break;
 		case Seven:
-			value = Eight;
+			m_value = Eight;
 			break;
 		case Eight:
-			value = Nine;
+			m_value = Nine;
 			break;
 		case Nine:
-			value = Ten;
+			m_value = Ten;
 			break;
 		case Ten:
-			value = J;
+			m_value = J;
 			break;
 		case J:
-			value = Q;
+			m_value = Q;
 			break;
 		case Q:
-			value = K;
+			m_value = K;
 			break;
 		case K:
-			value = A;
+			m_value = A;
 			break;
 		case A:
-			value = INVALID;
+			m_value = LIMIT;
 			break;
 		default:
 			break;
 		}
+
         return *this;
     }
 
-	Sequence& operator++(int)
+	/*Sequence& operator++(int)
     {
 		Sequence& tmp(*this); // copy
         operator++(); // pre-increment
         return tmp;   // return old value
-    }
-
-	Value value;
+    }*/
+private:
+	e_value m_value;
 };
+
+inline bool operator ==(const Sequence &a, const Sequence &b)          { return a.GetValue() == b.GetValue(); }
+inline bool operator ==(const Sequence &a, const Sequence::e_value &b) { return a.GetValue() == b; }
+inline bool operator ==(const Sequence::e_value &a, const Sequence &b) { return a == b.GetValue(); }
+inline bool operator !=(const Sequence &a, const Sequence &b)          { return a.GetValue() != b.GetValue(); }
+inline bool operator !=(const Sequence &a, const Sequence::e_value &b) { return a.GetValue() != b; }
+inline bool operator !=(const Sequence::e_value &a, const Sequence &b) { return a != b.GetValue(); }
+
+template <typename Elem, typename Traits>
+std::basic_ostream<Elem, Traits> &operator <<(
+        std::basic_ostream<Elem, Traits> &os,      
+        const Sequence &obj)
+{
+    return os << obj.ToString();
+}
 
 #endif /* PRIMATIVES_H_ */

@@ -7,8 +7,9 @@
 
 #include "Pack.h"
 #include "Person.h"
+#include "Game.h"
 #include <iostream>
-#include <unistd.h>
+//#include <unistd.h>
 
 int main(int argc, char * argv[])
 {
@@ -19,15 +20,19 @@ int main(int argc, char * argv[])
 	Person person_4("Karl Stiller");
 
 	std::vector<Person> players;
+	// First person is first dealer
 	players.push_back(person_1);
 	players.push_back(person_2);
 	players.push_back(person_3);
 	players.push_back(person_4);
 
+	std::cout << "Starting game!" << std::endl;
 	for (auto round = 1; round < 11; ++round)
 	{
 		Pack pack;
+		std::cout << "Created pack!" << std::endl;
 		pack.Shuffle();
+		std::cout << "Shuffled pack!" << std::endl;
 
 		for (auto deal_count = 0; deal_count < round; ++deal_count)
 		{
@@ -44,12 +49,20 @@ int main(int argc, char * argv[])
 		// Players now need to play their cards
 		for (auto play_count = 0; play_count < round; ++play_count)
 		{
-			std::vector<Card> round_set;
+			Game trick(trump_card.GetSuit());
+			// TODO This loop needs to start with the previous winner or player following the dealer on first round
 			for (auto &player : players)
 			{
-				round_set.push_back(player.PlayCard());
+				trick.PlayCard(player.PlayCard(), player);
 			}
-			// Who won?  Who cares for now...
+
+			std::cout << trick.ToString() <<std::endl;
+
+			Card card(Suit::INVALID, Sequence::INVALID);
+			Person winner("INVALID");
+			trick.GetWinner(card, winner);
+			std::cout << "Winner is: " << winner.GetName() << " " << card.ToString() << std::endl;
+			break;
 		}
 		std::cout << "Waiting" << std::endl;
 		char pause_str[100];

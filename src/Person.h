@@ -22,6 +22,7 @@ public:
 	void ClearCards() { m_hand.clear(); };
 	void DealCard(Card &card) { m_hand.push_back(card); };
 	Card PlayCard();
+	std::string GetName() { return m_name; };
 private:
 	std::string m_name;
 	std::vector<Card> m_hand;

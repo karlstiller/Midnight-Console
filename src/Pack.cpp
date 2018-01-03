@@ -14,11 +14,10 @@
 Pack::Pack()
 {
 	// Add all the normal cards
-	Suit suit_it(Suit::Spades);
-	for (; suit_it.value <= Suit::Hearts; ++suit_it )
+	for (Suit suit_it(Suit::Spades); suit_it.GetValue() <= Suit::Hearts; ++suit_it )
 	{
 		Sequence sequence_it(Sequence::Two);
-		for (; sequence_it.value <= Sequence::A; ++sequence_it)
+		for (; sequence_it.GetValue() <= Sequence::A; ++sequence_it)
 		{
 			pack.push_back(Card(suit_it, sequence_it));
 		}
@@ -26,7 +25,7 @@ Pack::Pack()
 
 	// Add the Jokers
 	Sequence sequence_it(Sequence::Two);
-	for (; sequence_it.value <= Sequence::Five; ++sequence_it)
+	for (; sequence_it.GetValue() <= Sequence::Five; ++sequence_it)
 	{
 		pack.push_back(Card(Suit::Joker, sequence_it));
 	}
