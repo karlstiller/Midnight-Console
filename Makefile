@@ -4,7 +4,7 @@
 # 29/12/2017
 
 CXX=clang++
-LDFLAGS  := -L/usr/lib -lstdc++ -lm -g -std=c++11 -fPIC
+LDFLAGS  := -lstdc++ -g -fPIC
 
 TARGET_EXEC ?= midnight
 
@@ -36,7 +36,7 @@ $(BUILD_DIR)/%.c.o: %.c
 # c++ source
 $(BUILD_DIR)/%.cpp.o: %.cpp
 	$(MKDIR_P) $(dir $@)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(LDFLAGS) -c $< -o $@
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -std=c++11 -c $< -o $@
 
 
 .PHONY: clean

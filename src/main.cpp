@@ -30,9 +30,7 @@ int main(int argc, char * argv[])
 	for (auto round = 1; round < 11; ++round)
 	{
 		Pack pack;
-		std::cout << "Created pack!" << std::endl;
 		pack.Shuffle();
-		std::cout << "Shuffled pack!" << std::endl;
 
 		for (auto deal_count = 0; deal_count < round; ++deal_count)
 		{
@@ -62,7 +60,6 @@ int main(int argc, char * argv[])
 			Person winner("INVALID");
 			trick.GetWinner(card, winner);
 			std::cout << "Winner is: " << winner.GetName() << " " << card.ToString() << std::endl;
-			break;
 		}
 		std::cout << "Waiting" << std::endl;
 		char pause_str[100];

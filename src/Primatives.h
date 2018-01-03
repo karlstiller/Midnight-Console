@@ -9,6 +9,7 @@
 #define PRIMATIVES_H_
 
 #include <string>
+#include <cstdint>
 
 class Suit
 {
