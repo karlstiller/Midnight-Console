@@ -1,24 +1,24 @@
 /*
- * Person.h
+ * Player.h
  *
  *  Created on: 29 Dec. 2017
  *      Author: Karl
  */
 
-#ifndef PERSON_H_
-#define PERSON_H_
+#ifndef PLAYER_H_
+#define PLAYER_H_
 
 #include "Card.h"
 #include <vector>
 
-class Person
+class Player
 {
 public:
-	Person(const std::string &name)
+	Player(const std::string &name)
 	: m_name(name)
 	{ };
 
-	~Person() {};
+	~Player() {};
 	void ClearCards() { m_hand.clear(); };
 	void DealCard(Card &card) { m_hand.push_back(card); };
 	Card PlayCard();
@@ -28,4 +28,4 @@ private:
 	std::vector<Card> m_hand;
 };
 
-#endif /* PERSON_H_ */
+#endif /* PLAYER_H_ */

@@ -6,20 +6,20 @@
  */
 
 #include "Pack.h"
-#include "Person.h"
-#include "Game.h"
+#include "Player.h"
+#include "Trick.h"
 #include <iostream>
 //#include <unistd.h>
 
 int main(int argc, char * argv[])
 {
 	// Create players
-	Person person_1("Keith Stiller");
-	Person person_2("Jan Stiller");
-	Person person_3("Anna Stiller");
-	Person person_4("Karl Stiller");
+	Player person_1("Keith Stiller");
+	Player person_2("Jan Stiller");
+	Player person_3("Anna Stiller");
+	Player person_4("Karl Stiller");
 
-	std::vector<Person> players;
+	std::vector<Player> players;
 	// First person is first dealer
 	players.push_back(person_1);
 	players.push_back(person_2);
@@ -47,7 +47,7 @@ int main(int argc, char * argv[])
 		// Players now need to play their cards
 		for (auto play_count = 0; play_count < round; ++play_count)
 		{
-			Game trick(trump_card.GetSuit());
+			Trick trick(trump_card.GetSuit());
 			// TODO This loop needs to start with the previous winner or player following the dealer on first round
 			for (auto &player : players)
 			{
@@ -57,7 +57,7 @@ int main(int argc, char * argv[])
 			std::cout << trick.ToString() <<std::endl;
 
 			Card card(Suit::INVALID, Sequence::INVALID);
-			Person winner("INVALID");
+			Player winner("INVALID");
 			trick.GetWinner(card, winner);
 			std::cout << "Winner is: " << winner.GetName() << " " << card.ToString() << std::endl;
 		}

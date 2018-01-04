@@ -1,16 +1,16 @@
 /*
- * Person.cpp
+ * Player.cpp
  *
  *  Created on: 29 Dec. 2017
  *      Author: Karl
  */
 
-#include "Person.h"
+#include "Player.h"
 #include <unistd.h>
 #include <iostream>
 
 Card
-Person::PlayCard()
+Player::PlayCard()
 {
 	Card playing_card = m_hand.back();
 	m_hand.pop_back();
