@@ -9,6 +9,7 @@
 #define PLAYER_H_
 
 #include "Card.h"
+#include "Trick.h"
 #include <vector>
 
 class Player
@@ -21,7 +22,7 @@ public:
 	~Player() {};
 	void ClearCards() { m_hand.clear(); };
 	void DealCard(Card &card) { m_hand.push_back(card); };
-	Card PlayCard();
+	Card PlayCard(const Trick &trick);
 	std::string GetName() { return m_name; };
 private:
 	std::string m_name;

@@ -14,7 +14,7 @@
 class Pack
 {
 public:
-	Pack();
+	Pack(const uint8_t& number);
 	virtual ~Pack() {};
 	std::string ToString() const;
 	void Shuffle();

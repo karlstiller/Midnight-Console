@@ -100,13 +100,6 @@ public:
         return *this;
     }
 
-	/*Suit& operator++(int)
-    {
-		Suit& tmp(*this); // copy
-        operator++(); // pre-increment
-        return tmp;   // return old value
-    }*/
-
 private:
 	// member variables
 	e_value m_value;

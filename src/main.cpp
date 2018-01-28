@@ -29,7 +29,7 @@ int main(int argc, char * argv[])
 	std::cout << "Starting game!" << std::endl;
 	for (auto round = 1; round < 11; ++round)
 	{
-		Pack pack;
+		Pack pack(2);
 		pack.Shuffle();
 
 		for (auto deal_count = 0; deal_count < round; ++deal_count)
@@ -51,7 +51,7 @@ int main(int argc, char * argv[])
 			// TODO This loop needs to start with the previous winner or player following the dealer on first round
 			for (auto &player : players)
 			{
-				trick.PlayCard(player.PlayCard(), player);
+				trick.PlayCard(player.PlayCard(trick), player);
 			}
 
 			std::cout << trick.ToString() <<std::endl;

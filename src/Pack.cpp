@@ -11,23 +11,27 @@
 #include <algorithm>
 #include <iterator>
 
-Pack::Pack()
+Pack::Pack(const uint8_t& number)
 {
-	// Add all the normal cards
-	for (Suit suit_it(Suit::Spades); suit_it.GetValue() <= Suit::Hearts; ++suit_it )
+	// Add number number of packs
+	for(auto i = 0; i < number; ++i)
 	{
-		Sequence sequence_it(Sequence::Two);
-		for (; sequence_it.GetValue() <= Sequence::A; ++sequence_it)
+		// Add all the normal cards
+		for (Suit suit_it(Suit::Spades); suit_it.GetValue() <= Suit::Hearts; ++suit_it )
 		{
-			pack.push_back(Card(suit_it, sequence_it));
+			Sequence sequence_it(Sequence::Two);
+			for (; sequence_it.GetValue() <= Sequence::A; ++sequence_it)
+			{
+				pack.push_back(Card(suit_it, sequence_it));
+			}
 		}
-	}
 
-	// Add the Jokers
-	Sequence sequence_it(Sequence::Two);
-	for (; sequence_it.GetValue() <= Sequence::Five; ++sequence_it)
-	{
-		pack.push_back(Card(Suit::Joker, sequence_it));
+		// Add the Jokers
+		Sequence sequence_it(Sequence::Two);
+		for (; sequence_it.GetValue() <= Sequence::Five; ++sequence_it)
+		{
+			pack.push_back(Card(Suit::Joker, sequence_it));
+		}
 	}
 }
 

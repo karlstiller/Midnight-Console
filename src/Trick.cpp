@@ -6,6 +6,7 @@
  */
 
 #include "Trick.h"
+#include "Player.h"
 #include <cassert>
 #include <iostream>
 
@@ -110,6 +111,12 @@ Trick::GetWinner(Card &card, Player &winner)
 	assert(true);
 	return;
 }
+
+Player
+PlayedSequence::GetPlayer() const
+{
+	return m_player;
+};
 
 std::string
 Trick::ToString() const
