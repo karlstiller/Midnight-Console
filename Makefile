@@ -4,7 +4,7 @@
 # 29/12/2017
 
 CXX=clang++
-LDFLAGS  := -lstdc++ -g -fPIC
+LDFLAGS  := -lstdc++ -g -fPIC -no-pie
 
 TARGET_EXEC ?= midnight
 
