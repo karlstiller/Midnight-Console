@@ -22,10 +22,8 @@ Player::PlayCard(const Trick &trick)
 	}
 	Card playing_card = m_hand.back();
 	m_hand.pop_back();
-	sleep(1);
+	//sleep(1);
 
-	std::cout << m_name << " plays a " << playing_card.ToString() << std::endl;
+	//std::cout << m_name << " plays a " << playing_card.ToString() << std::endl;
 	return playing_card;
 }
-
-
